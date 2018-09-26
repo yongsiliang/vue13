@@ -3,8 +3,12 @@
     
     <!-- 顶部的 Header区域 -->
     <mt-header fixed title="我的外卖。Vue项目"></mt-header>
-    <!-- 中间的 路由 router-view 区域 -->
-		<router-view></router-view>
+   
+	  <!-- 中间的 路由 router-view 区域 -->
+		<transition>
+			<router-view></router-view>
+		</transition>
+	
     <!-- 底部 Tabbar 区域 -->
     <nav class="mui-bar mui-bar-tab">
 			<router-link class="mui-tab-item" to="/home">
@@ -39,8 +43,28 @@
 
 <style lang="scss" scoped>
   .app-container{
-    margin-top: 40px;
+    padding-top: 40px;
+		overflow-x: hidden;
+		padding-bottom: 50px;
+
   }
+
+.v-enter{
+	 opacity: 0;
+	 transform: translateX(100%);
+	
+}
+
+.v-leave-to{
+	opacity:0;
+	transform: translateX(-100%);
+	position: absolute;
+}
+
+.v-enter-active,
+.v-leave-activ{
+	transition: all 1s ease;
+}
 
 </style>
 
