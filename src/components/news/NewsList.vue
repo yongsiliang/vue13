@@ -41,7 +41,7 @@
             //获取新闻列表
             this.$http.get('api/getnewslist').then(result=>{
                 if(result.body.status ===0){
-                    console.log(result.body)
+                    // console.log(result.body)
                     this.newslist =result.body.message;
                 }else{
                     Toast('获取新闻失败')

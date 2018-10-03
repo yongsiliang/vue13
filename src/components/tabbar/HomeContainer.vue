@@ -2,13 +2,7 @@
     <div>
 
         <!-- 轮播图区域 -->
-        <mt-swipe :auto="4000">
-            <!-- 在组件中，使用 v-for 循环的话，一定要使用 key -->
-            <mt-swipe-item v-for="item in lunbotuList" :key="item.img">
-                <img :src="item.img" alt="">
-            </mt-swipe-item>
-           
-        </mt-swipe>
+        <swiper :lunbotuList="lunbotuList" :isfull="true"></swiper>
 
         <!-- 九宫格到六宫格的改造 -->
         <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -16,12 +10,14 @@
                 <router-link to="/home/newslist">
                     <img src="../../images/menu1.png"/>
                     <div class="mui-media-body">新闻资讯</div></router-link></li>
-            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                <router-link to="/home/photolist">
                     <img src="../../images/menu2.png"/>
-                    <div class="mui-media-body">图片分享</div></a></li>
-            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+                    <div class="mui-media-body">图片分享</div></router-link></li>
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                <router-link to="/home/goodslist">
                    <img src="../../images/menu3.png"/>
-                    <div class="mui-media-body">产品购买</div></a></li>
+                    <div class="mui-media-body">产品购买</div></router-link></li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
                    <img src="../../images/menu4.png"/>
                     <div class="mui-media-body">留言反馈</div></a></li>
@@ -38,6 +34,8 @@
 
 <script>
     import {Toast} from 'mint-ui'
+    import swiper from '../subcomponents/swiper.vue'
+
 
     export default{
         data(){
@@ -66,6 +64,9 @@
                     }
                 })
             }
+        },
+        components:{
+            swiper
         }
     }
 
@@ -73,28 +74,7 @@
 </script>
 
 <style lang="scss" scoped>
-.mint-swipe{
-    height: 200px;
-    //  : 交集选择器
-    // .mint-swipe-item:nth-child(1){
-    //     background: blue;
-    // }
-    .mint-swipe-item{
-        &:nth-child(1){
-            background: red;
-        }
-        &:nth-child(2){
-            background: blue;
-        }
-        &:nth-child(3){
-            background:cyan;
-        }
-        img{
-            height:100 ;
-            width: 100%;
-        }
-    }
-}
+
  .mui-grid-view.mui-grid-9{
     background-color: #fff; 
     border: 0;
